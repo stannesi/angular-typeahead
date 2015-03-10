@@ -1,0 +1,119 @@
+<script type="text/ng-template" id="typeaheadModalContent.html"> 
+<div ng-controller="TypeaheadCtrl">
+    <div class="modal-header">
+        <h3 class="modal-title">Add User</h3>
+    </div>
+    <div class="modal-body">
+        <form role="form">
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="username-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-describedby="username-addon1" value="{{modalItems}}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-user" id="names-addon1"></span>
+                    <input type="text" class="form-control" placeholder="First Name" aria-describedby="names-addon1">
+                    <input type="text" class="form-control" placeholder="Last Name" aria-describedby="names-addon1">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-envelope" id="email-addon1"></span>
+                    <input type="text" class="form-control" placeholder="Email" aria-describedby="email-addon1">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-earphone" id="phone-addon1"></span>
+                    <input type="text" class="form-control" placeholder="Phone number" aria-describedby="phone-addon1">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+</script>
+
+<div class="container bs-docs-container">
+    <h3>Search - pure angular typeahead using angular directive </h3>
+    <div class="input-group open">
+        <span class="input-group-addon glyphicon glyphicon-user" ></span>
+        <input type="text"
+               ng-model="model"
+               placeholder="{{placeholder}}"
+               ng-change="querySearch()"
+               class="form-control dropdown-toggle"
+               aria-expanded="true">
+        <ul class="dropdown-menu" 
+            role="menu"
+
+            ng-hide="!model.length || hide">
+         
+            <li role="presentation"
+                class="typehead-item"
+                ng-repeat="item in items | limitTo:20 track by $index"
+                ng-class="{active:isCurrent($index)}"
+                ng-click="selectItem(item, $index)"
+                ng-mouseenter="setCurrent($index)"
+                >
+                <a role="menuitem" tabindex="-1" href="#"
+                   ng-if="isEmpty">
+                    <span>{{item.firstname}} {{item.lastname}}</span>
+                </a>
+                
+                <a class="btn btn-primary" href="#" role="button"   
+                   ng-if="!isEmpty">
+                   <span>Add User</span>
+                </a>
+            </li>
+            
+            <li role="presentation"
+                class="typehead-item"
+                ng-class="{active:isActive($index)}"
+                ng-mouseenter="setCurrent($index)"
+                ng-if="!isEmpty">
+                <a class="btn btn-primary"
+                   href="#"
+                   role="button"
+                    ng-click="addNew()"
+                   <span>Add User</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+ </div>
+
+<!--
+<div ng-controller="typeaheadModalCtrl">
+    <script type="text/ng-template" id="typeaheadModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+    <button class="btn btn-default" ng-click="openModal()">Open me!</button>
+    <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
+-->

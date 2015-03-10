@@ -1,0 +1,7 @@
+<a class="typehead-item">
+    <img class="img-circle pull-left" ng-src="assets/images/{{match.model.picture}}" width="50px">
+    <div class="pull-left">
+        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span><br>
+        <span class="small pull=left" >{{match.model.company}}</span>
+    </div>
+</a>

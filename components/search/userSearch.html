@@ -1,0 +1,14 @@
+<div class="container bs-docs-container" ng-controller="SearchCtrl">
+    <h3>Search - Bootstrap typeahead</h3>
+    <div class="input-group">
+        <span class="input-group-addon glyphicon glyphicon-user" style="top:0px" ></span>
+
+        <input type="text"
+               ng-model="selected"
+               placeholder="Search User" 
+               typeahead="user as user.firstname + ' ' + user.lastname for user in users |  filter:$viewValue | limitTo:10"
+               typeahead-template-url="search-tpl.html"
+               class="form-control">
+    </div>
+
+ </div>

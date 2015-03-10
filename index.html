@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" ng-app="TypeAheadApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Typeahead</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="../vendor/ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+        <script src="dataStore.js"></script>
+        <script src="app.js"></script>
+    </head>
+    
+    <body>
+        <div ng-controller="MainCtrl">
+            <div class="header">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <!--
+                                <img alt="Brand" src="assets/images/logo.png"
+                                     style="float:left; margin-right:5px; margin-top:2px "> 
+                                -->
+                                <span style="float: right;margin-top: 6px;">{{appDetails.title}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container bs-docs-container" ng-controller="SearchCtrl">
+                <h3>Search - Bootstrap typeahead</h3>
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-user" style="top:0px" ></span>
+
+                    <input type="text"
+                           ng-model="selected"
+                           placeholder="Search User" 
+                           typeahead="user as user.firstname + '  ' + user.lastname for user in users |  filter:$viewValue | limitTo:10"
+                           typeahead-template-url="search-tpl.html"
+                           class="form-control">
+                </div>
+           
+             </div>
+            
+            
+            <div ng-controller="TypeaheadCtrl">
+                <div class="typeahead" 
+                            model="model"
+                            placeholder="Search User"
+                            search="search(model)"
+                            select="select(item)"> </div>
+            </div>
+            
+            <!--
+            <div ng-controller="TypeaheadCtrl">
+                <typeahead 
+                            class="typeahead"
+                            model="model"
+                            placeholder="Search User"
+                            search="search(model)"
+                            select="select(item)"
+
+                            query="name"
+                            add-button="open()"
+                            on-select="onSelected(item)" />
+            </div>
+            <div  ng-include src="'components/typeahead/typeahead.tpl.html'">
+            -->
+            </div>
+            
+            <div class="footer"></div>
+        </div>   
+    </body>
+</html>

@@ -1,0 +1,42 @@
+.navbar {
+    background: #000;
+    color: #fff
+}
+
+.navbar .navbar-brand {
+    color: #bbb;
+}
+
+a.typehead-item {
+    overflow: hidden;
+    width:300px;
+    cursor: pointer;
+}
+a.typehead-item img {
+    width: 50px;
+}
+a.typehead-item img,
+li.typehead-item div
+{
+    margin: 5px;  
+}    
+
+a.typehead-item:hover img {
+    width: 80px;
+}
+
+
+li.typehead-item {
+    overflow: hidden;
+    width:300px;
+    cursor: pointer;
+}
+
+
+li.typehead-item .btn { 
+    margin: 5px
+}
+
+.input-group-addon.glyphicon {
+    top: 0px
+}
